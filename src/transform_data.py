@@ -116,7 +116,7 @@ class TaxiTransformer:
     for type in types:
         self.logger.info(f"Lendo dados da camada  para o type: {type}")
         df = self.spark.read.parquet(f"{self.config['files']['raw']}/{type}_tripdata_*")
-        df_transformed = self._generate_refined_layer(type=type, df=df)
+        df_transformed = self._generate_refined_layer(df=df)
         self.logger.info(f"Escrevendo dados na tabela {self.config['db']['refined']}.tb_trips_taxis")
         self._write_delta_table(df=df_transformed,schema=self.config['db']['refined'],table=f"tb_trips_taxis",partitions=["nm_type_service","dt_partition"])
 
