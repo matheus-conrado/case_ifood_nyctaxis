@@ -29,6 +29,12 @@ spark = SparkSession.builder.appName("ifood-case").getOrCreate()
 with open('config.yml', 'r') as file:
     config = yaml.safe_load(file)
 
+#Criação do volume para o projeto
+spark.sql("""
+  CREATE VOLUME IF NOT EXISTS workspace.default.data
+  COMMENT 'Volume gerenciado para dados brutos do NYC Taxi'
+""")
+
 for layer, path in config['files'].items():
   try:
     dbutils.fs.mkdirs(path)
