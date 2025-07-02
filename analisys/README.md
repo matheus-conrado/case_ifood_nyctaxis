@@ -1,4 +1,3 @@
-# scratch
+# Questões do Negócio
 
-This folder is reserved for personal, exploratory notebooks.
-By default these are not committed to Git, as 'scratch' is listed in .gitignore.
+Esta seção conta com notebook python onde poderemos ter acesso as análises solicitadas no desafio técnico 
