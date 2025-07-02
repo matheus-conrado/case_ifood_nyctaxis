@@ -1,0 +1,66 @@
+resources:
+  jobs:
+    case_ifood_nyctaxis_job:
+      name: case_ifood_nyctaxis_job
+      email_notifications:
+        on_start:
+          - seu_email@email.com
+        on_success:
+          - seu_email@email.com
+        on_failure:
+          - seu_email@email.com
+      tasks:
+        - task_key: setup_enviroment
+          spark_python_task:
+            python_file: ../src/setup_environment.py
+          email_notifications:
+            on_failure:
+              - seu_email@email.com
+          environment_key: Default
+        - task_key: extract
+          depends_on:
+            - task_key: setup_enviroment
+          spark_python_task:
+            python_file: ../src/main_extract.py
+            parameters:
+              - --data_inicio
+              - 01/01/2023
+              - --data_fim
+              - 01/05/2023
+              - --types
+              - green
+              - yellow
+          email_notifications:
+            on_failure:
+              - seu_email@email.com
+          environment_key: Default
+        - task_key: transform
+          depends_on:
+            - task_key: extract
+          spark_python_task:
+            python_file: ../src/main_transform.py
+            parameters:
+              - --types
+              - green
+              - yellow
+          email_notifications:
+            on_failure:
+              - seu_email@email.com
+          environment_key: Default
+        - task_key: load
+          depends_on:
+            - task_key: transform
+          spark_python_task:
+            python_file: ../src/main_trusted.py
+          email_notifications:
+            on_failure:
+              - seu_email@email.com
+          environment_key: Default
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            client: "2"
+      performance_target: PERFORMANCE_OPTIMIZED
+

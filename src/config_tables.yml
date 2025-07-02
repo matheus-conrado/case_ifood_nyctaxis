@@ -1,0 +1,31 @@
+tb_trips_taxis:
+  description: "Essa tabela tem como finalidade hospedar os registros de viagens de taxis amarelos e verdes"
+  columns_dict:
+    id_vendor: "Um código que indica o provedor de TPEP que forneceu o registro.
+                1 = Creative Mobile Technologies, LLC
+                2 = Curb Mobility, LLC
+                6 = Myle Technologies Inc
+                7 = Helix"
+    qt_passanger_count: "O número de passageiros no veículo."
+    vl_total_amount: "Valor total cobrado dos passageiros. Não inclui gorjetas em dinheiro."
+    dt_hr_pickup_datetime: "Data e hora em que o medidor foi acionado."
+    dt_hr_dropoff_datetime: "Data e hora em que o medidor foi desativado."
+    dt_pickup_hour: "Hora em que o medidor foi acionado."
+    dt_pickup_minute: "Minuto em que o medidor foi acionado."
+    dt_dropoff_hour: "Hora em que o medidor foi acionado."
+    dt_dropoff_minute: "Minuto em que o medidor foi acionado."
+    nm_type_service: "Tipo do servico prestado"
+    dt_partition: "Data dos dados que foram coletados"
+
+tb_avg_mes_tipo:
+  description: "Essa tabela tem como finalidade hospedar os registros da media de valor por Mẽs arrecadado"
+  columns_dict:
+    mes_corrida: "Mês em que a corrida foi realizada"
+    nm_type_service: "Tipo do servico prestado"
+    media_valor_corrida: "Valor médio das corridas"
+
+tb_passageiro_por_hora:
+  description: "Essa tabela tem como finalidade hospedar os registros do calculo da média de passageiros por hora"
+  columns_dict:
+    hora: "Numero da hora de 0~23"
+    media_passageiros: "Numero da media de passageiros"

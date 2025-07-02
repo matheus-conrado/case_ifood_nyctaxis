@@ -1,0 +1,7 @@
+files:
+  raw: "/Volumes/workspace/default/data/ifood-case-nyctaxi/raw_layer"
+db:
+  refined: "refined_layer"
+  trusted: "trusted_layer"
+
+base_url: "https://d37ci6vzurychx.cloudfront.net/trip-data/{}_tripdata_{}.parquet"
