@@ -81,7 +81,11 @@ Necessario alterar o arquivo localizado na raiz ```databricks.yml``` adicionando
       - user_name: {seu_email}
         level: CAN_MANAGE
 ```
-e na variavel ```host``` tambem em ambos os ambientes (prod e dev)
+e na variavel ```host``` incluir a URL do console similar à:
+ ```curl
+   https://<sua-instancia>.databricks.com
+   ```
+alterar tambem em ambos os ambientes (prod e dev)
 ```yml
     workspace:
       host: link_host
@@ -97,9 +101,9 @@ No console da Databricks (área já logada), vamos coletar um token para utliza�
    7. Clique em "Generate" (ou "Gerar").
    8. Copie o token exibido na tela e guarde em local seguro. Você não poderá visualizá-lo novamente.
 
-Com o token em mãos, agora vamos coletar o host, que nada mais é do que a URL inicial da platforma, algo que segue essa linha:
+Com o token em mãos, agora vamos coletar o host, que nada mais é do que a URL inicial da platforma, coletada anteriormente:
    ```curl
-   https://<sua-instancia>.databricks.com/
+   https://<sua-instancia>.databricks.com
    ```
 ### 4. Configurar o ```Databricks CLI```:
 Com o link da instância e as credenciais geradas, agora precisamos configurar a ferramenta Databricks CLI. Com um terminal aberto, digite o seguinte comando:
