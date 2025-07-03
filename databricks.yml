@@ -11,13 +11,13 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://dbc-78cfce01-acc4.cloud.databricks.com
+      host: link_host
 
   prod:
     mode: production
     workspace:
-      host: https://dbc-78cfce01-acc4.cloud.databricks.com
+      host: link_host
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
     permissions:
-      - user_name: matheus.g.conrado@gmail.com
+      - user_name: seu_email@email.com
         level: CAN_MANAGE

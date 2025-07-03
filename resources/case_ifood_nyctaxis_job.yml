@@ -4,18 +4,18 @@ resources:
       name: case_ifood_nyctaxis_job
       email_notifications:
         on_start:
-          - seu_email@email.com
+          - ${workspace.current_user.userName}
         on_success:
-          - seu_email@email.com
+          - ${workspace.current_user.userName}
         on_failure:
-          - seu_email@email.com
+          - ${workspace.current_user.userName}
       tasks:
         - task_key: setup_enviroment
           spark_python_task:
             python_file: ../src/setup_environment.py
           email_notifications:
             on_failure:
-              - seu_email@email.com
+              - ${workspace.current_user.userName}
           environment_key: Default
         - task_key: extract
           depends_on:
@@ -32,7 +32,7 @@ resources:
               - yellow
           email_notifications:
             on_failure:
-              - seu_email@email.com
+              - ${workspace.current_user.userName}
           environment_key: Default
         - task_key: transform
           depends_on:
@@ -45,7 +45,7 @@ resources:
               - yellow
           email_notifications:
             on_failure:
-              - seu_email@email.com
+              - ${workspace.current_user.userName}
           environment_key: Default
         - task_key: load
           depends_on:
@@ -54,7 +54,7 @@ resources:
             python_file: ../src/main_trusted.py
           email_notifications:
             on_failure:
-              - seu_email@email.com
+              - ${workspace.current_user.userName}
           environment_key: Default
       queue:
         enabled: true

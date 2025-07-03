@@ -76,10 +76,15 @@ Para iniciarmos o projeto vamos seguir os seguintes passos:
 
 ### 2. Alterar o arquivo databricks para o email cadastrado:
 Necessario alterar o arquivo localizado na raiz ```databricks.yml``` adicionando o email que utilizou no cadastro para o parametro ```user_name```:
-```databricks.yml
+```yml
     permissions:
       - user_name: {seu_email}
         level: CAN_MANAGE
+```
+e na variavel ```host``` tambem em ambos os ambientes (prod e dev)
+```yml
+    workspace:
+      host: link_host
 ```
 ### 3. Coletar as credenciais no portal da Databricks:
 No console da Databricks (área já logada), vamos coletar um token para utlização na ferramenta que irá realizar o processo de deploy do nosso job. Seguindo os seguintes passos:
@@ -118,7 +123,7 @@ seu@pc:~/git/case_ifood_nyctaxis$ databricks bundle validate
 Name: case_ifood_nyctaxis
 Target: dev
 Workspace:
-  Host: https://dbc-78cfce01-acc4.cloud.databricks.com
+  Host: https://seuhost.databricks.com
   User: seu_email@email.com
   Path: /Workspace/Users/seu_email@email.com/.bundle/case_ifood_nyctaxis/dev
 
